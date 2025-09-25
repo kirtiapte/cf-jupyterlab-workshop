@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 # Replace with your actual connection string
-CONN_STR = "postgresql://pgadmin:629PVy514m0w8rc3jq7Y@q-s0.postgres-instance.kdc01-dvs-lab-mgt-net-82.service-instance-465d60d4-e494-49a5-aace-022e92fbdc1c.bosh:5432/postgres"
+CONN_STR = ""
 
 
 
