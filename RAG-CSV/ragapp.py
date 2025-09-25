@@ -16,7 +16,6 @@ from langchain_core.tools import Tool
 from langchain.tools import tool
 from langchain_openai import OpenAIEmbeddings
 from datetime import date
-from langchain_nomic import NomicEmbeddings
 import warnings
 import ssl
 from langchain_community.embeddings import OllamaEmbeddings
@@ -25,6 +24,11 @@ from langchain.chains import RetrievalQA
 import gradio as gr
 import re
 from cfenv import AppEnv
+import sys, os
+
+# go one level up from cflangchainfolder/ to project root
+sys.path.append(os.path.abspath(".."))
+from cfutils import CFGenAIService
 # -----------------------------
 # Embedding setup
 # -----------------------------
@@ -36,12 +40,18 @@ env = AppEnv()
 # -----------------------------
 # Embedding service details
 # -----------------------------
-embedding_service = env.get_service(name="prod-embedding-nomic-text")
-embedding_credentials = embedding_service.credentials
+embedding_service = CFGenAIService("prod-embedding-nomic-text")
 
-API_BASE = embedding_credentials["api_base"] + "/v1"
-API_KEY = embedding_credentials["api_key"]
-MODEL_NAME = embedding_credentials["model_name"]
+# List available models
+embedding_models = embedding_service.list_models()
+for m in embedding_models:
+    print(f"- {m['name']} (capabilities: {', '.join(m['capabilities'])})")
+
+
+API_BASE = embedding_service.api_base
+API_KEY = embedding_service.api_key
+MODEL_NAME = embedding_models[0]["name"]
+
 
 
 def embed_text(text: str):
@@ -93,8 +103,19 @@ vectorstore = PGVector(
 # RAG setup
 # -----------------------------
 # Get bound service "gen-ai-qwen3-ultra"
-chat_service = env.get_service(name="gen-ai-qwen3-ultra")
-chat_credentials = chat_service.credentials
+chat_service = CFGenAIService("gen-ai-qwen3-ultra")
+
+# List available models
+chat_models = chat_service.list_models()
+for m in chat_models:
+    print(f"- {m['name']} (capabilities: {', '.join(m['capabilities'])})")
+
+# construct chat_credentials
+chat_credentials = {
+    "api_base": chat_service.api_base,
+    "api_key": chat_service.api_key,
+    "model_name": chat_models[0]["name"]
+}
 
 # Optional: configure custom http client
 httpx_client = httpx.Client(verify=False)
