@@ -40,7 +40,7 @@ env = AppEnv()
 # -----------------------------
 # Embedding service details
 # -----------------------------
-embedding_service = CFGenAIService("prod-embedding-nomic-text")
+embedding_service = CFGenAIService("tanzu-nomic-embed-text")
 
 # List available models
 embedding_models = embedding_service.list_models()
@@ -103,7 +103,7 @@ vectorstore = PGVector(
 # RAG setup
 # -----------------------------
 # Get bound service "gen-ai-qwen3-ultra"
-chat_service = CFGenAIService("gen-ai-qwen3-ultra")
+chat_service = CFGenAIService("tanzu-gpt-oss-120b")
 
 # List available models
 chat_models = chat_service.list_models()
