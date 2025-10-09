@@ -14,11 +14,11 @@ class CFGenAIService:
             raise ValueError(f"Service '{service_name}' not found in VCAP_SERVICES")
 
         creds = self.service.credentials
-        self.api_base = creds.get("api_base")
-        self.api_key = creds.get("api_key")
-
+        
         endpoint = creds.get("endpoint", {})
         self.config_url = endpoint.get("config_url")
+        self.api_base = endpoint.get("api_base")
+        self.api_key = endpoint.get("api_key")
 
     def get_headers(self):
         return {
