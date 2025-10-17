@@ -1,0 +1,6 @@
+transaction_id,user_id,date,category,description,amount,balance
+T001,U100,2025-06-15,Deposit,Paycheck deposit from employer,3500.0,12500.0
+T002,U100,2025-06-20,Investment,Purchased 10 shares of AAPL,-1800.0,10700.0
+T003,U100,2025-07-05,Expense,Rent payment,-2500.0,8200.0
+T004,U100,2025-07-10,Dividend,Dividend from VTI ETF,120.0,8320.0
+T005,U100,2025-07-18,Expense,Grocery shopping,-200.0,8120.0
