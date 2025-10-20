@@ -48,7 +48,7 @@ for m in embedding_models:
     print(f"- {m['name']} (capabilities: {', '.join(m['capabilities'])})")
 
 
-API_BASE = embedding_service.api_base
+API_BASE = embedding_service.api_base + "/openai/v1"
 API_KEY = embedding_service.api_key
 MODEL_NAME = embedding_models[0]["name"]
 
@@ -112,7 +112,7 @@ for m in chat_models:
 
 # construct chat_credentials
 chat_credentials = {
-    "api_base": chat_service.api_base,
+    "api_base": chat_service.api_base + "/openai/v1",
     "api_key": chat_service.api_key,
     "model_name": chat_models[0]["name"]
 }
