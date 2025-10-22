@@ -13,12 +13,15 @@ from langchain_openai import ChatOpenAI
 #from langchain_core.pydantic_v1 import BaseModel
 from pydantic import BaseModel, ValidationError
 from tavily import TavilyClient
-import os
+import os,sys
 import sqlite3
 import json
 import re
 from typing import Dict, Any
 from cfenv import AppEnv
+# go one level up from cflangchainfolder/ to project root
+sys.path.append(os.path.abspath(".."))
+from cfutils import CFGenAIService
 
 warnings.filterwarnings("ignore", message=".*TqdmWarning.*")
 
@@ -45,9 +48,15 @@ class ewriter():
         # configure model
         httpx_client = httpx.Client(http2=True, verify=False, timeout=10.0)
         # Get bound service "gen-ai-qwen3-ultra"
-        chat_service = env.get_service(name="gen-ai-qwen3-ultra")
-        chat_credentials = chat_service.credentials
-        
+        chat_service = CFGenAIService("tanzu-gpt-oss-120b")
+        # List available models
+        models = chat_service.list_models()
+        # construct chat_credentials
+        chat_credentials = {
+            "api_base": chat_service.api_base + "/openai/v1",
+            "api_key": chat_service.api_key,
+            "model_name": models[0]["name"]
+        }        
         # Initialize LLM with credentials from cfenv
         self.model = ChatOpenAI(
             temperature=0.9,
@@ -77,7 +86,7 @@ class ewriter():
                                          "be used when making any requested revisions (as outlined below). "
                                          "Generate a list of search queries that will gather any relevant information. "
                                          "Only generate 2 queries max.")
-        os.environ['TAVILY_API_KEY']="your_tavily_key"
+        os.environ['TAVILY_API_KEY']="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"
         self.tavily = TavilyClient(api_key=os.environ["TAVILY_API_KEY"])
         builder = StateGraph(AgentState)
         builder.add_node("planner", self.plan_node)
@@ -489,11 +498,11 @@ class writer_gui( ):
                 #print(f"vary_btn{stat}")
                 return(gr.update(variant=stat))
             
-            with gr.Tab("Agent"):
+            with gr.Tab("Airplane Maintenance Agent"):
                 with gr.Row():
-                    topic_bx = gr.Textbox(label="Essay Topic", value="Pizza Shop")
-                    gen_btn = gr.Button("Generate Essay", scale=0,min_width=80, variant='primary')
-                    cont_btn = gr.Button("Continue Essay", scale=0,min_width=80)
+                    topic_bx = gr.Textbox(label="Equipment or Fault Description", value="Hydraulic leak in landing gear")
+                    gen_btn = gr.Button("Generate Report", scale=0,min_width=80, variant='primary')
+                    cont_btn = gr.Button("Continue Report Draft", scale=0,min_width=80)
                 with gr.Row():
                     lnode_bx = gr.Textbox(label="last node", min_width=100)
                     nnode_bx = gr.Textbox(label="next node", min_width=100)
