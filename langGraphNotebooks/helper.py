@@ -19,9 +19,7 @@ import json
 import re
 from typing import Dict, Any
 from cfenv import AppEnv
-# go one level up from cflangchainfolder/ to project root
-sys.path.append(os.path.abspath(".."))
-from cfutils import CFGenAIService
+from tanzu_utils import CFGenAIService
 
 warnings.filterwarnings("ignore", message=".*TqdmWarning.*")
 

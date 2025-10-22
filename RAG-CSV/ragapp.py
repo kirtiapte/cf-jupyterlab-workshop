@@ -25,10 +25,7 @@ import gradio as gr
 import re
 from cfenv import AppEnv
 import sys, os
-
-# go one level up from cflangchainfolder/ to project root
-sys.path.append(os.path.abspath(".."))
-from cfutils import CFGenAIService
+from tanzu_utils import CFGenAIService
 # -----------------------------
 # Embedding setup
 # -----------------------------
