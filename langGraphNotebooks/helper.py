@@ -19,6 +19,9 @@ import json
 import re
 from typing import Dict, Any
 from cfenv import AppEnv
+project_root = os.path.abspath(os.path.join(os.getcwd(), ".."))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 from tanzu_utils import CFGenAIService
 
 warnings.filterwarnings("ignore", message=".*TqdmWarning.*")
@@ -576,7 +579,7 @@ class writer_gui( ):
         self.demo.launch(
             share=True,  # Creates a public link
             server_name="0.0.0.0",  # Allows access from any IP
-            server_port=7860,  # Default Gradio port
+            server_port=7861,  # Default Gradio port
             show_error=True,
             quiet=False
         )

@@ -25,6 +25,9 @@ import gradio as gr
 import re
 from cfenv import AppEnv
 import sys, os
+project_root = os.path.abspath(os.path.join(os.getcwd(), ".."))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 from tanzu_utils import CFGenAIService
 # -----------------------------
 # Embedding setup
