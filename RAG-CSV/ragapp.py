@@ -1,5 +1,4 @@
-from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
+from langchain_classic.chains import RetrievalQA
 from langchain_postgres.vectorstores import PGVector
 import requests
 import os
@@ -7,20 +6,16 @@ import requests
 import json
 import httpx
 from openai import OpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain.chains import LLMChain
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_classic.chains import LLMChain
 from langchain_openai import ChatOpenAI
-from langchain.agents import tool
-from langchain.agents import initialize_agent, AgentType, load_tools
-from langchain_core.tools import Tool
-from langchain.tools import tool
 from langchain_openai import OpenAIEmbeddings
 from datetime import date
 import warnings
 import ssl
 from langchain_community.embeddings import OllamaEmbeddings
 from openai import OpenAI
-from langchain.chains import RetrievalQA
+from langchain_classic.chains import RetrievalQA
 import gradio as gr
 import re
 from cfenv import AppEnv
