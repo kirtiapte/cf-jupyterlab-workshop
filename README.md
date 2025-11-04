@@ -73,7 +73,7 @@ or use command in a JupyterLab Terminal
     http_client=httpx_client
 )
   </pre>
-- now you can run the notebooks locally instead of only on Tanzu Platform
+- Run notebook locally instead of only on Tanzu Platform
   
 
 
