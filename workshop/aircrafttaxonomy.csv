@@ -1,0 +1,11 @@
+id,category,subcategory,description
+1,Engine,Turbofan,High-bypass turbofan engine used in commercial jets
+2,Landing Gear,Main Gear,Retractable main landing gear assembly
+3,Fuselage,Body,Pressurized aircraft body structure
+4,Avionics,Navigation,Navigation system including GPS and INS
+5,Electrical,Power,Electrical power distribution system
+6,Hydraulics,Actuation,Hydraulic system controlling flaps and landing gear
+7,Fuel,Storage,Fuel tanks and fuel distribution system
+8,Cabin,Seats,Passenger seating and cabin layout
+9,Flight Controls,Elevators,Primary control surfaces for pitch
+10,Flight Controls,Ailerons,Primary control surfaces for roll

@@ -1,0 +1,6 @@
+id,date,equipment,issue,procedure
+1,2025-08-01,Engine A,Oil leakage,Replace oil seal and check pressure
+2,2025-08-02,Landing Gear B,Hydraulic failure,Inspect hydraulic lines and refill fluid
+3,2025-08-03,Fuselage C,Corrosion,Apply anti-corrosion treatment and inspect panels
+4,2025-08-04,Avionics D,Navigation error,Run diagnostic and update firmware
+5,2025-08-05,Engine E,Overheating,Replace thermostat and clean cooling system

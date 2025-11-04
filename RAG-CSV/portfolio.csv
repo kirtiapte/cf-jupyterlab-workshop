@@ -1,0 +1,6 @@
+portfolio_id,user_id,symbol,company_name,shares,avg_buy_price,current_price,sector,risk_level
+P001,U100,AAPL,Apple Inc.,25,175.0,189.5,Technology,Medium
+P002,U100,VTI,Vanguard Total Stock Market ETF,40,220.0,229.5,Index Fund,Low
+P003,U100,MSFT,Microsoft Corp.,15,315.0,330.0,Technology,Medium
+P004,U100,TSLA,Tesla Inc.,5,260.0,250.0,Automotive,High
+P005,U100,GOOGL,Alphabet Inc.,10,140.0,150.0,Technology,Medium
