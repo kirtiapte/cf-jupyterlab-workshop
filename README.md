@@ -73,6 +73,10 @@ or use command in a JupyterLab Terminal
     http_client=httpx_client
 )
   </pre>
+
+
+  ## Disclaimer
+  This repository is an unofficial project provided “as is.” It is not supported or endorsed by any organization, and no warranty or guarantee of functionality is provided. Use at your own discretion.
 - now you can run the notebooks locally instead of only on Tanzu Platform
   
 
